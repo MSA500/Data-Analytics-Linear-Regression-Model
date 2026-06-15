@@ -84,31 +84,7 @@ def cgpa_boxplot():
 
 
 # ─────────────────────────────────────────────
-# CHART 5 — Correlation Matrix
-# Correlation between all numeric columns
-# ─────────────────────────────────────────────
-@router.get("/chart/correlation")
-def correlation():
-    cols = [
-        "IQ", "Prev_Sem_Result", "CGPA",
-        "Academic_Performance", "Internship_Experience",
-        "Extra_Curricular_Score", "Communication_Skills",
-        "Projects_Completed", "Placement",
-    ]
-    corr = df[cols].corr().round(3)
-    result = []
-    for row in cols:
-        for col in cols:
-            result.append({
-                "x":     col,
-                "y":     row,
-                "value": float(corr.loc[row, col]),
-            })
-    return {"cols": cols, "data": result}
-
-
-# ─────────────────────────────────────────────
-# CHART 6 — Scatter: CGPA vs IQ
+# CHART 5— Scatter: CGPA vs IQ
 # Colored by Placement (sample 500 for performance)
 # ─────────────────────────────────────────────
 @router.get("/chart/scatter")
@@ -124,7 +100,7 @@ def scatter():
 
 
 # ─────────────────────────────────────────────
-# CHART 7 — Internship Bar
+# CHART 6 — Internship Bar
 # Placement rate with vs without internship
 # ─────────────────────────────────────────────
 @router.get("/chart/internship-bar")
